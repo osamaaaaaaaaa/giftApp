@@ -126,7 +126,7 @@ Widget _cart({required Cartcontroller controller, required int carindex}) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    constraints: BoxConstraints(maxWidth: Get.width - 160),
+                    constraints: BoxConstraints(maxWidth: Get.width - 200),
                     child: Text(
                       prod.name.toString(),
                       style: TextStyle(color: Colors.grey, fontSize: 16),
@@ -137,7 +137,7 @@ Widget _cart({required Cartcontroller controller, required int carindex}) {
                     padding: EdgeInsets.zero,
                     constraints: BoxConstraints(
                         //   maxHeight: 60,
-                        maxWidth: Get.width - 160),
+                        maxWidth: Get.width - 200),
                     child: Text(
                       prod.description.toString(),
                       overflow: TextOverflow.ellipsis,

@@ -2,6 +2,7 @@
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:giftappgp/Binding/binding.dart';
@@ -10,6 +11,7 @@ import 'package:giftappgp/Services/StorageKeys.dart';
 import 'package:giftappgp/View/Screens/Admin/aHome.dart';
 import 'package:giftappgp/View/Screens/Auth/Login.dart';
 import 'package:giftappgp/View/Screens/Home/mainContainer.dart';
+import 'package:giftappgp/View/Screens/onBording.dart';
 
 import 'package:giftappgp/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -59,7 +61,7 @@ class app extends StatelessWidget {
       translations: Localization(),
       locale: Locale('ar'),
       initialBinding: Binding(),
-      home: Login(),
+      home: Onbording(),
     );
   }
 }

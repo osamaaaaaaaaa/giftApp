@@ -58,6 +58,7 @@ dependencies:
   url_launcher: ^6.3.0
   # flutter_stripe: ^10.2.0
   search_page: ^2.3.0
+  flutter_onboarding_slider: ^1.0.11
 dev_dependencies:
   flutter_test:
     sdk: flutter
