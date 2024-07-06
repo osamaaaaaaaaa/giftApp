@@ -16,7 +16,7 @@ import 'package:giftappgp/Models/productModel.dart';
 import 'package:giftappgp/Services/StorageKeys.dart';
 import 'package:giftappgp/View/Screens/Home/mainContainer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+// import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 
 class Cartcontroller extends GetxController {
@@ -235,98 +235,98 @@ class Cartcontroller extends GetxController {
     }
   }
 
-  Map<String, dynamic>? paymentIntent;
-  Future<void> makePayment(context,
-      {required int amount, required int planId}) async {
-    try {
-      paymentIntent = await createPaymentIntent('$amount', 'USD');
+  // Map<String, dynamic>? paymentIntent;
+  // Future<void> makePayment(context,
+  //     {required int amount, required int planId}) async {
+  //   try {
+  //     paymentIntent = await createPaymentIntent('$amount', 'USD');
 
-      //STEP 2: Initialize Payment Sheet
-      await Stripe.instance
-          .initPaymentSheet(
-              paymentSheetParameters: SetupPaymentSheetParameters(
-                  customerId: 'user',
-                  paymentIntentClientSecret: paymentIntent![
-                      'client_secret'], //Gotten from payment intent
-                  // style: ThemeMode.dark,
+  //     //STEP 2: Initialize Payment Sheet
+  //     await Stripe.instance
+  //         .initPaymentSheet(
+  //             paymentSheetParameters: SetupPaymentSheetParameters(
+  //                 customerId: 'user',
+  //                 paymentIntentClientSecret: paymentIntent![
+  //                     'client_secret'], //Gotten from payment intent
+  //                 // style: ThemeMode.dark,
 
-                  merchantDisplayName: 'GiftApp'))
-          .then((value) {});
+  //                 merchantDisplayName: 'GiftApp'))
+  //         .then((value) {});
 
-      //STEP 3: Display Payment sheet
-      displayPaymentSheet(context, planId);
-    } catch (err) {
-      throw Exception(err);
-    }
-  }
+  //     //STEP 3: Display Payment sheet
+  //     displayPaymentSheet(context, planId);
+  //   } catch (err) {
+  //     throw Exception(err);
+  //   }
+  // }
 
-  displayPaymentSheet(context, planId) async {
-    try {
-      await Stripe.instance.presentPaymentSheet().then((value) {
-        showDialog(
-            context: context,
-            builder: (_) => AlertDialog(
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.check_circle,
-                        color: Colors.green,
-                        size: 100.0,
-                      ),
-                      SizedBox(height: 10.0),
-                      Text("Payment Successful!"),
-                    ],
-                  ),
-                ));
+  // displayPaymentSheet(context, planId) async {
+  //   try {
+  //     await Stripe.instance.presentPaymentSheet().then((value) {
+  //       showDialog(
+  //           context: context,
+  //           builder: (_) => AlertDialog(
+  //                 content: Column(
+  //                   mainAxisSize: MainAxisSize.min,
+  //                   children: [
+  //                     Icon(
+  //                       Icons.check_circle,
+  //                       color: Colors.green,
+  //                       size: 100.0,
+  //                     ),
+  //                     SizedBox(height: 10.0),
+  //                     Text("Payment Successful!"),
+  //                   ],
+  //                 ),
+  //               ));
 
-        paymentIntent = null;
-      }).onError((error, stackTrace) {
-        throw Exception(error);
-      });
-    } on StripeException catch (e) {
-      print('Error is:---> $e');
-      AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: const [
-                Icon(
-                  Icons.cancel,
-                  color: Colors.red,
-                ),
-                Text("Payment Failed"),
-              ],
-            ),
-          ],
-        ),
-      );
-    } catch (e) {
-      print('$e');
-    }
-  }
+  //       paymentIntent = null;
+  //     }).onError((error, stackTrace) {
+  //       throw Exception(error);
+  //     });
+  //   } on StripeException catch (e) {
+  //     print('Error is:---> $e');
+  //     AlertDialog(
+  //       content: Column(
+  //         mainAxisSize: MainAxisSize.min,
+  //         children: [
+  //           Row(
+  //             children: const [
+  //               Icon(
+  //                 Icons.cancel,
+  //                 color: Colors.red,
+  //               ),
+  //               Text("Payment Failed"),
+  //             ],
+  //           ),
+  //         ],
+  //       ),
+  //     );
+  //   } catch (e) {
+  //     print('$e');
+  //   }
+  // }
 
-  createPaymentIntent(String amount, String currency) async {
-    try {
-      //Request body
-      Map<String, dynamic> body = {
-        'amount': amount,
-        'currency': currency,
-      };
+  // createPaymentIntent(String amount, String currency) async {
+  //   try {
+  //     //Request body
+  //     Map<String, dynamic> body = {
+  //       'amount': amount,
+  //       'currency': currency,
+  //     };
 
-      //Make post request to Stripe
-      var response = await http.post(
-        Uri.parse('https://api.stripe.com/v1/payment_intents'),
-        headers: {
-          'Authorization': 'Bearer ${Storagekeys.strpi_sk}',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: body,
-      );
-      return json.decode(response.body);
-    } catch (err) {
-      throw Exception(err.toString());
-    }
-  }
+  //     //Make post request to Stripe
+  //     var response = await http.post(
+  //       Uri.parse('https://api.stripe.com/v1/payment_intents'),
+  //       headers: {
+  //         'Authorization': 'Bearer ${Storagekeys.strpi_sk}',
+  //         'Content-Type': 'application/x-www-form-urlencoded'
+  //       },
+  //       body: body,
+  //     );
+  //     return json.decode(response.body);
+  //   } catch (err) {
+  //     throw Exception(err.toString());
+  //   }
+  // }
 }

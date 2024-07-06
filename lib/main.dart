@@ -2,7 +2,7 @@
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+// import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:giftappgp/Binding/binding.dart';
 import 'package:giftappgp/Services/Localization.dart';
@@ -34,8 +34,8 @@ void main(List<String> args) async {
     sound: true,
     provisional: true,
   );
-  Stripe.publishableKey = Storagekeys.strpi_pk;
-  await Stripe.instance.applySettings();
+  // Stripe.publishableKey = Storagekeys.strpi_pk;
+  // await Stripe.instance.applySettings();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(app());

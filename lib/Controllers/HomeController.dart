@@ -229,7 +229,7 @@ class Homecontroller extends GetxController {
       context: context,
       delegate: SearchPage<ProudactsModel>(
         items: allproducts,
-        searchLabel: 'Search people',
+        searchLabel: 'Search',
         suggestion: Center(
           child: Text('Filter people by name'),
         ),

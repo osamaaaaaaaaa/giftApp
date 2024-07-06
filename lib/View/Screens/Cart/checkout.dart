@@ -114,11 +114,11 @@ class checkout extends StatelessWidget {
                                     InkWell(
                                       onTap: () {
                                         // Get.back();
-                                        controller.makePayment(
-                                          context,
-                                          amount: 5000,
-                                          planId: 1,
-                                        );
+                                        // controller.makePayment(
+                                        //   context,
+                                        //   amount: 5000,
+                                        //   planId: 1,
+                                        // );
                                       },
                                       child: Column(
                                         children: [
